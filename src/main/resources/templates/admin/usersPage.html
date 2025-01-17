@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/menu}">
+<head>
+    <title>Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            font-size: 18px;
+        }
+
+        td {
+            font-size: 16px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        /* Προσθήκη για το scrollable container του πίνακα */
+        .table-container {
+            max-height: 400px;  /* Σταθερό ύψος για τον πίνακα */
+            overflow-y: auto;   /* Εμφάνιση κάθετης μπάρας κύλισης */
+            border: 1px solid #ddd;  /* Προαιρετικό: προσθέτει ένα περίγραμμα γύρω από τον πίνακα */
+            border-radius: 8px;
+        }
+
+    </style>
+</head>
+<body>
+<div layout:fragment="main-content">
+    <div class="container mt-5">
+        <br>
+        <br>
+        <br>
+        <h1>Users</h1>
+
+        <!-- Δημιουργία του container που έχει scrollable πίνακα -->
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.role}"></td>
+                    <td th:text="${user.enabled ? 'Enabled' : 'Disabled'}"></td>
+                    <td>
+                        <form th:action="@{'/admin/users/' + ${user.id} + '/enable'}" method="post">
+                            <input type="hidden" name="enabled" th:value="${!user.enabled}" />
+                            <button type="submit" th:text="${user.enabled ? 'Disable' : 'Enable'}"></button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

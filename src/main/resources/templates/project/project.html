@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{supporter/menu}">
+<head>
+  <meta charset="UTF-8">
+  <title>Project List</title>
+  <style>
+
+    .detail-btn, .delete-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .detail-btn {
+      background-color: #f0ad4e;
+      color: white;
+      border: 1px solid #e09b3d;
+    }
+
+    .detail-btn:hover {
+      background-color: #ec971f;
+      border-color: #c7852e;
+    }
+
+    .project-card {
+      border: 1px solid #ccc;
+      padding: 15px;
+      width: 300px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .projects-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div layout:fragment="main-content">
+    <br>
+    <br>
+    <br>
+    <br>
+      <div th:if="${listProjects.isEmpty()}">
+        <p>You have no projects yet.</p>
+      </div>
+
+      <div class="projects-container">
+        <div th:each="project : ${listProjects}" class="project-card">
+          <h3 th:text="${project.title}"></h3>
+          <p th:text="${project.description}"></p>
+          <a th:href="@{/project/details/{id}(id=${project.id})}" class="detail-btn">Support</a>
+        </div>
+      </div>
+  </div>
+</body>
+
+</html>

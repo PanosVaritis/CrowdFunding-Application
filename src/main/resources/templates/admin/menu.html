@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="el"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Menu</title>
+  <style>
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background-color: #333;
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav a {
+      float: left;
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 20px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    main {
+      margin-top: 60px;
+      padding: 20px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+
+    .user-name-box {
+      padding: 15px;
+      background-color: white;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/">Home</a>
+  <a href="/admin/users">Enable Users</a>
+  <a href="/admin/project">Enable Projects</a>
+  <a th:href="@{/logout}" class="btn btn-danger">Logout</a>
+</nav>
+
+<main layout:fragment="main-content">
+
+  <div class="container">
+    <h1>User</h1>
+
+    <div class="user-name-box" th:text="${username}"></div>
+  </div>
+
+</main>
+
+<footer>
+  <h2>Crowdfunding Solutions</h2>
+</footer>
+
+</body>
+</html>
+
+

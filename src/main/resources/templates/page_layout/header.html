@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        . masthead-brand{
+            text-align: left !important;
+        }
+    </style>
+
+</head>
+
+<body>
+<header class="masthead mb-auto" th:fragment="header">
+    <div class="inner">
+        <h3 class="masthead-brand">Crowdfunding Solutions</h3>
+        <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/">Home</a>
+            <a  sec:authorize="!isAuthenticated()" class="nav-link" href="/login">Login</a>
+            <a sec:authorize="!isAuthenticated()" class="nav-link" href="/register">Sign Up</a>
+            <a sec:authorize="isAuthenticated()" class="nav-link" href="/logout">Logout</a>
+            <a sec:authorize="hasAuthority('ADMIN')" class="nav-link" href="/admin">Admin Menu</a>
+            <a sec:authorize="hasAuthority('CREATOR')" class="nav-link" href="/creator">Creator Menu</a>
+            <a sec:authorize="hasAuthority('SUPPORTER')" class="nav-link" href="/supporter">Supporter Menu</a>
+        </nav>
+    </div>
+</header>
+</body>
+</html>

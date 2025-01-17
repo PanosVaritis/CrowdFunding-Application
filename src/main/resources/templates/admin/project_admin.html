@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{admin/menu}">
+
+<head>
+  <title>Projects</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #f4f4f4;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    th, td {
+      padding: 20px;
+      text-align: left;
+      border-bottom: 2px solid #ddd;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      font-size: 18px;
+    }
+
+    td {
+      font-size: 16px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+
+    .table-container {
+      max-height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+</style>
+
+    </head>
+
+<body>
+<div layout:fragment="main-content">
+  <div class="container mt-5">
+    <br>
+    <br>
+    <h1>Projects</h1>
+
+    <div class="table-container">
+      <table>
+        <thead>
+        <tr>
+          <th>Title</th>
+          <th>Status</th>
+          <th>Actions</th>
+          <th>Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="project : ${projects}">
+          <td th:text="${project.title}"></td>
+          <td th:text="${project.status ? 'Enabled' : 'Disabled'}"></td>
+          <td>
+            <form th:action="@{'/admin/project/' + ${project.id} + '/status'}" method="post">
+              <input type="hidden" name="status" th:value="${!project.status}" />
+              <button type="submit" th:text="${project.status ? 'Disable' : 'Enable'}"></button>
+            </form>
+          </td>
+          <td>
+            <form th:action="@{/project/details/{id}(id=${project.id})}">
+              <button type="submit" th:text="Details"></button>
+            </form>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</body>
+</html>
