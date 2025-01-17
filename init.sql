@@ -7,6 +7,6 @@ CREATE TABLE IF NOT EXISTS users (
     enabled BOOLEAN
     );
 
-INSERT INTO users (id, username, password, email, role, enabled) VALUES (0, 'nikos', '1234', 'nikos@exmpale.com','admin', TRUE);
+INSERT INTO users (id, username, password, email, role, enabled) VALUES (0, 'admin', '1234', 'admin@exmpale.com','admin', TRUE);
 
 
