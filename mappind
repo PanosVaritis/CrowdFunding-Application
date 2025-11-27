@@ -1,0 +1,27 @@
+#Description 
+This text file contains info about the urls of the application. Since we havent used swagger yet, this can be used 
+as a guide from the user
+
+
+#Base URL of the application
+http://localhost:8080
+
+#Admin Credentials 
+username : admin 
+password : 1234
+email : admin@example.com
+
+#URLS accesible regardless the rights
+/login -> form for the user to login
+/register -> form for the user to register
+
+
+#URLS acccesible only from the administrator 
+/admin -> menu for the admin
+/admin/users -> window in which the admin can enable or disable users
+/admin/project -> window in which the admin can enable or disable projects
+
+#URLS accecible only from the supporter 
+
+
+#URLS accecible only from the creator

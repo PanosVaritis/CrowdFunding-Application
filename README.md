@@ -1,7 +1,5 @@
 # Crowdfunding Web App
 
-This repository demonstrates a basic setup of Spring Security, showcasing fundamental authentication and authorization mechanisms within a Spring Boot application.
-
 ## Installation
 
 Clone the repository
