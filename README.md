@@ -26,3 +26,17 @@ SELECT * FROM users;
 ## Technologies
 -   Java 21
 -   Maven 3.9.9
+
+## Database: Fix the database connection
+Create a .env file in the root of the project with the fields shown below
+```bash
+export POSTGRES_USER=you_username
+export POSTGRES_PASSWORD=your_password
+export POSTGRES_DB=your_databse
+```
+Add the same credentials in the application properties file
+```bash
+spring.datasource.url=jdbc:postgresql://postgres:5432/your_database
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+```
