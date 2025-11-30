@@ -6,13 +6,7 @@ Clone the repository
 ```
 git clone https://github.com/PanosVaritis/CrowdFunding-Application.git
 ```
-<!--
- Build the project with Maven:
-```
-mvn clean package -DskipTests
-```
--->
-## Usag
+## Usage
 Check the database
 ```bash
 \dt
