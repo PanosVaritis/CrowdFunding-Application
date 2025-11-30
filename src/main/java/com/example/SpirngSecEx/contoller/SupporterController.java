@@ -42,13 +42,4 @@ public class SupporterController {
     }
 
 
-//    @GetMapping("/contributions")
-//    public String supDetails (Model model){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        Supporter mySup = (Supporter) authentication.getPrincipal();
-//        Supporter sup = supporterService.getSupporter(mySup.getId());
-//        model.addAttribute("supporter", sup);
-//        return "supporter/supporter_details";
-//    }
-
 }
