@@ -9,6 +9,7 @@ pipeline {
     parameters {
         string (name: 'USERNAME', description:'Provide a username', defaultValue: 'Panagiotis Varitis')
         choice (name: 'ENV', description: 'Select environment', choices: ['develop','stagging','production'])
+        booleanParam (name: 'DEBUG', description: 'Param used fro debug purposes', defaultValue: true)
     }
 
     stages{
@@ -45,6 +46,7 @@ pipeline {
                 sh """
                 echo "The value of username is: ${params.USERNAME}"
                 echo "The value of environent is: ${params.ENV}"
+                echo "The value of debug is: ${params.DEBUG}"
                 """
             }
         }
