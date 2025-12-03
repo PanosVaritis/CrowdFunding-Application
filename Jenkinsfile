@@ -25,5 +25,12 @@ pipeline {
                 '''
             }
         }
+        stage ('Print default env variables'){
+            steps {
+                sh'''
+                echo "The build number is : ${BUILD_NUMBER}"
+                '''
+            }
+        }
     }
 }
