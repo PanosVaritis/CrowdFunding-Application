@@ -50,5 +50,19 @@ pipeline {
                 """
             }
         }
+        stage ('Condition check'){
+            steps {
+                script {
+                    if (params.DEBUG){
+                        echo "Running in debug mode"
+                    }else {
+                        echo "Running in developping mode"
+                    }
+                    for (int i = 1;i < 3;i++){
+                        echo "couner = ${i}"
+                    }
+                }
+            }
+        }
     }
 }
