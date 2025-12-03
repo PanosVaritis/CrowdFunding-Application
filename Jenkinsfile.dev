@@ -1,10 +1,6 @@
 pipeline {
     agent any 
 
-    options {
-        cleanWs()
-    }
-
         stages {
             
             stage ('Welcome message'){
@@ -12,6 +8,11 @@ pipeline {
                     sh """
                     echo "Hello from jenkins server"
                     """
+                }
+            }
+            stage ('Clean workspace'){
+                steps {
+                    cleanWs()
                 }
             }
             stage ('Checkout the code'){
