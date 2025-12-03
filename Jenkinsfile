@@ -5,6 +5,10 @@ pipeline {
         VERSION="1.0.0" 
         IMAGE= "${VERSION}:${BUILD_NUMBER}"
     }
+
+    parameters {
+        string (name : 'USERNAME')
+    }
     stages{
         stage ('Print message'){
             steps {
@@ -26,16 +30,18 @@ pipeline {
                 '''
             }
         }
-        stage ('Approve'){
-            steps {
-                echo message: "Do you wish to continue with env variables print"
-            }
-        }
         stage ('Print default env variables'){
             steps {
                 sh'''
                 echo "The build number is : ${BUILD_NUMBER}"
                 echo "Image is: ${IMAGE}"
+                '''
+            }
+        }
+        stage ('Print parameters'){
+            steps {
+                sh '''
+                echo "The value of username is: ${params.USERNAME}"
                 '''
             }
         }
