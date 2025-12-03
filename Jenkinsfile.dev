@@ -1,0 +1,16 @@
+pipeline {
+    agent any {
+
+        stages {
+            
+            stage ('Welcome message'){
+                step {
+                    sh """
+                    echo "Hello from jenkins server"
+                    """
+                }
+            }
+        }
+
+    }
+}
