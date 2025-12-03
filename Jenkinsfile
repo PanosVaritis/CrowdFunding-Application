@@ -7,8 +7,10 @@ pipeline {
     }
 
     parameters {
-        string (name : 'USERNAME', description :'Provide a username', defaultValue: 'Panagiotis Varitis')
+        string (name: 'USERNAME', description:'Provide a username', defaultValue: 'Panagiotis Varitis')
+        choice (name: 'ENV', description: 'Select environment', choices: ['develop','stagging','production'], defaultValue: 'building')
     }
+
     stages{
         stage ('Print message'){
             steps {
@@ -42,6 +44,7 @@ pipeline {
             steps {
                 sh """
                 echo "The value of username is: ${params.USERNAME}"
+                echo "The value of environent is: ${params.ENV}"
                 """
             }
         }
