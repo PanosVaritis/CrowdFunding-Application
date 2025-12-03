@@ -49,3 +49,4 @@ Stop the app and clear all the base (To keep the data ommit the -v param)
 ```bash
 docker compose down -v
 ```
+
