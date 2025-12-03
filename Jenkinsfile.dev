@@ -5,7 +5,7 @@ pipeline {
         GITHUB_TOKEN=credentials('github-token')
         GITHUB_USERNAME='panosvaritis'
         GITHUB_URL='ghcr.io'
-        IMAGE_P1="${GITHUB_TOKEN}/${GITHUB_USERNAME}"
+        IMAGE_P1="${GITHUB_URL}/${GITHUB_USERNAME}"
     }
 
     parameters {
