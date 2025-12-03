@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         VERSION="1.0.0",
-        IMAGE= ${VERSION}:${BUILD_NUMBER}
+        IMAGE= "${VERSION}:${BUILD_NUMBER}"
     }
     stages{
         stage ('Print message'){
