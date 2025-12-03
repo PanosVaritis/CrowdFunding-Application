@@ -37,7 +37,7 @@ pipeline {
                         if (params.DEBUG){
                             echo "Git hub username: ${GITHUB_USERNAME}"
                             echo "Git hub url: ${GITHUB_URL}"
-                            echo "Git hub token: ${GITHUB_TOKEN}"
+                            echo "Token is fetched!! Lenght ${GITHUB_TOKEN.lenght()}"
                             echo "Image name prefix: ${IMAGE_P1}"
                         }else {
                             echo "Nothing to show"
