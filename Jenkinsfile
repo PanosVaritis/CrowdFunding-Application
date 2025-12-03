@@ -7,7 +7,7 @@ pipeline {
     }
 
     parameters {
-        string (name : 'USERNAME')
+        string (name : 'USERNAME', description :'Provide a username', defaultValue: 'Panagiotis Varitis')
     }
     stages{
         stage ('Print message'){
