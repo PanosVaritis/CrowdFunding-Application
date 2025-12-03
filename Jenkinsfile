@@ -6,6 +6,11 @@ pipeline {
                 sh '''
                 echo "Hello from jenkins"
                 '''
+                sh '''
+                echo "The current directory is $(pwd)"
+                '''
+                sh '''
+                echo "System information: $(uname -a)"
             }
         }
     }
