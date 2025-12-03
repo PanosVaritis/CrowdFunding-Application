@@ -40,9 +40,9 @@ pipeline {
         }
         stage ('Print parameters'){
             steps {
-                sh '''
+                sh """
                 echo "The value of username is: ${params.USERNAME}"
-                '''
+                """
             }
         }
     }
