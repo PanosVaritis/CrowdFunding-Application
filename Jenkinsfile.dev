@@ -4,7 +4,7 @@ pipeline {
         stages {
             
             stage ('Welcome message'){
-                step {
+                steps {
                     sh """
                     echo "Hello from jenkins server"
                     """
