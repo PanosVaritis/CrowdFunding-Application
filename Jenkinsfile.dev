@@ -1,6 +1,10 @@
 pipeline {
     agent any 
 
+    options {
+        cleanWs()
+    }
+
         stages {
             
             stage ('Welcome message'){
@@ -8,6 +12,11 @@ pipeline {
                     sh """
                     echo "Hello from jenkins server"
                     """
+                }
+            }
+            stage ('Checkout the code'){
+                steps {
+                    checkout scm
                 }
             }
         }
