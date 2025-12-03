@@ -2,7 +2,7 @@ pipeline {
     agent any 
 
     environment {
-        VERSION="1.0.0"
+        VERSION="1.0.0" 
         IMAGE= "${VERSION}:${BUILD_NUMBER}"
     }
     stages{
@@ -24,6 +24,11 @@ pipeline {
                 sh '''
                 echo "The value of the variable is ${VERSION}"
                 '''
+            }
+        }
+        stage ('Approve'){
+            steps {
+                echo message: "Do you wish to continue with env variables print"
             }
         }
         stage ('Print default env variables'){
