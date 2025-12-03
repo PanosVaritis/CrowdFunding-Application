@@ -1,7 +1,7 @@
 pipeline {
     agent any 
 
-    environent {
+    environment {
         GITHUB_TOKEN=credentials('github-token')
         GITHUB_USERNAME='panosvaritis'
         GITHUB_URL='ghcr.io'
