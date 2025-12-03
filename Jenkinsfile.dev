@@ -1,6 +1,17 @@
 pipeline {
     agent any 
 
+    environent {
+        GITHUB_TOKEN=credentials('github-token')
+        GITHUB_USERNAME='panosvaritis'
+        GITHUB_URL='ghcr.io'
+        IMAGE_P1="${GITHUB_TOKEN}/${GITHUB_USERNAME}"
+    }
+
+    parameters {
+        bolleanParam (name: 'DEBUG', defaultValue: false, description: 'Used to show info about token')
+    }
+
         stages {
             
             stage ('Welcome message'){
@@ -20,5 +31,20 @@ pipeline {
                     checkout scm
                 }
             }
+            stage ('DEBUG'){
+                steps {
+                    script{
+                        if (params.DEBUG){
+                            echo "Git hub username: ${GITHUB_USERNAME}"
+                            echo "Git hub url: ${GITHUB_URL}"
+                            echo "Git hub token: ${GITHUB_TOKEN}"
+                            echo "Image name prefix: ${IMAGE_P1}"
+                        }else {
+                            echo "Nothing to show"
+                        }
+                    }
+                }
+            }
+            
         }
 }
