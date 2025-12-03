@@ -8,7 +8,7 @@ pipeline {
 
     parameters {
         string (name: 'USERNAME', description:'Provide a username', defaultValue: 'Panagiotis Varitis')
-        choice (name: 'ENV', description: 'Select environment', choices: ['develop','stagging','production'], defaultValue: 'building')
+        choice (name: 'ENV', description: 'Select environment', choices: ['develop','stagging','production'])
     }
 
     stages{
