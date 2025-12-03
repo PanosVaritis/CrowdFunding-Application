@@ -9,7 +9,7 @@ pipeline {
     }
 
     parameters {
-        bolleanParam (name: 'DEBUG', defaultValue: false, description: 'Used to show info about token')
+        booleanParam (name: 'DEBUG', defaultValue: false, description: 'Used to show info about token')
     }
 
         stages {
