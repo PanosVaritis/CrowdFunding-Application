@@ -2,7 +2,8 @@ pipeline {
     agent any 
 
     environment {
-        VERSION="1.0.0"
+        VERSION="1.0.0",
+        IMAGE= ${VERSION}:${BUILD_NUMBER}
     }
     stages{
         stage ('Print message'){
@@ -29,6 +30,7 @@ pipeline {
             steps {
                 sh'''
                 echo "The build number is : ${BUILD_NUMBER}"
+                echo "Image is: ${IMAGE}"
                 '''
             }
         }
