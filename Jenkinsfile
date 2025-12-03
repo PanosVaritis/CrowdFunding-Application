@@ -3,7 +3,9 @@ pipeline {
     stages{
         stage ('Print message'){
             steps {
-                sh 'echo "Hello from jenkins"'
+                sh '''
+                echo "Hello from jenkins"
+                '''
             }
         }
     }
