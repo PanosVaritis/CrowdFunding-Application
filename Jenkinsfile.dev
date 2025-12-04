@@ -45,10 +45,18 @@ pipeline {
                     }
                 }
             }
-            stage ('Login to git hub'){
+            stage ('Login to container registry'){
                 steps {
                     sh """
                     echo \${GITHUB_TOKEN} | docker login ${GITHUB_URL} -u ${GITHUB_USERNAME} --password-stdin
+                    """
+                }
+            }
+
+            stage ('Logout from container registry'){
+                steps {
+                    sh """
+                    docker logout ${GITHUB_URL}
                     """
                 }
             }
