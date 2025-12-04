@@ -48,7 +48,7 @@ pipeline {
             stage ('Login to git hub'){
                 steps {
                     sh """
-                    cat ${GITHUB_TOKEN} | docker login ${GITHUB_URL} -u ${GITHUB_USERNAME} --password-stdin
+                    cat \${GITHUB_TOKEN} | docker login ${GITHUB_URL} -u ${GITHUB_USERNAME} --password-stdin
                     """
                 }
             }
