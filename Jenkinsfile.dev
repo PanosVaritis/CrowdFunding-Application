@@ -53,7 +53,8 @@ pipeline {
                     """
                     //Step 2: Build image
                     sh """
-                    echo git log --oneline | awk 'NR == 1 {print $1}'
+                    COMMIT_HASH = \(git log --oneline | awk 'NR == 1 {print $1}')
+                    echo ${COMMIT_HASH}
                     """
 
                     //Step 3: Push image
