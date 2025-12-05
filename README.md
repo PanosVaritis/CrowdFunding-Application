@@ -50,3 +50,4 @@ Stop the app and clear all the base (To keep the data ommit the -v param)
 docker compose down -v
 ```
 
+
