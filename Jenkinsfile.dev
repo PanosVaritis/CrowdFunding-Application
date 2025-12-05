@@ -61,6 +61,10 @@ pipeline {
                     '''
 
                     //Step 3: Push image
+                    sh """
+                    docker push ${IMAGE_P1} --all-tags
+                    docker logout ${GITHUB_URL}
+                    """
                 }
             }
 
