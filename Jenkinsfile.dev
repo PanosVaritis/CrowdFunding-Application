@@ -55,6 +55,7 @@ pipeline {
                     sh '''
                     COMMIT_HASH=$(git log --oneline | awk 'NR == 1 {print $1}')
                     echo ${COMMIT_HASH}
+                    echo ${IMAGE_P1}:${COMMIT_HASH}
                     docker build -t ${IMAGE_P1}:${COMMIT_HASH} -t ${IMAGE_P1}:latest -f backend-autobuild-multistage.Dockerfile .
                     docker push ${IMAGE_P1} --all-tags
                     '''
