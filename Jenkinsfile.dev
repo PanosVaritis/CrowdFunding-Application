@@ -45,21 +45,21 @@ pipeline {
                     }
                 }
             }
-            stage ('Login to container registry'){
+            stage ('Build-Login-Push to container registry'){
                 steps {
+                    //Step 1: Login to container gegistry (Valid to all step block)
                     sh """
                     echo \${GITHUB_TOKEN} | docker login ${GITHUB_URL} -u ${GITHUB_USERNAME} --password-stdin
                     """
+                    //Step 2: Build image
+                    sh """
+                    echo ${BUILD_ID}
+                    """
+
+                    //Step 3: Push image
                 }
             }
 
-            stage ('Logout from container registry'){
-                steps {
-                    sh """
-                    docker logout ${GITHUB_URL}
-                    """
-                }
-            }
             
         }
 }
