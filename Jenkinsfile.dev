@@ -52,10 +52,10 @@ pipeline {
                     echo \${GITHUB_TOKEN} | docker login ${GITHUB_URL} -u ${GITHUB_USERNAME} --password-stdin
                     """
                     //Step 2: Build image
-                    sh """
+                    sh '''
                     COMMIT_HASH = $(git log --oneline | awk 'NR == 1 {print $1}')
                     echo ${COMMIT_HASH}
-                    """
+                    '''
 
                     //Step 3: Push image
                 }
