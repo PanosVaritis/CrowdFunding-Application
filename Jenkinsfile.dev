@@ -5,7 +5,7 @@ pipeline {
         GITHUB_TOKEN=credentials('github-token')
         GITHUB_USERNAME='panosvaritis'
         GITHUB_URL='ghcr.io'
-        IMAGE_P1="${GITHUB_URL}/${GITHUB_USERNAME}"
+        IMAGE_P1="${GITHUB_URL}/${GITHUB_USERNAME}/springbackend    "
     }
 
     parameters {
@@ -53,7 +53,7 @@ pipeline {
                     """
                     //Step 2: Build image
                     sh """
-                    echo ${BUILD_ID}
+                    echo git log --oneline | awk 'NR == 1 {print $1}'
                     """
 
                     //Step 3: Push image
