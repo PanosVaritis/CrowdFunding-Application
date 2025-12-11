@@ -70,7 +70,7 @@ pipeline {
         post {
             success {
                 mail to: 'panosvaritis@gmail.com',
-                subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+                subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """\
 Hello,
 
