@@ -72,15 +72,15 @@ pipeline {
                 mail to: 'panosvaritis@gmail.com',
                 subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """\
-Hello,
+                Hello,
 
-The build was successful!
+                The build was successful!
 
-Job: ${env.JOB_NAME}
-Build: #${env.BUILD_NUMBER}
+                Job: ${env.JOB_NAME}
+                Build: #${env.BUILD_NUMBER}
 
-Admin user
-"""
+                Kind regards Panos!
+                """
             }
         }
 }
