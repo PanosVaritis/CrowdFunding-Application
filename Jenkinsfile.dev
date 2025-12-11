@@ -65,7 +65,22 @@ pipeline {
                     docker logout ${GITHUB_URL}
                     """
                 }
+            }       
+        }
+        post {
+            success {
+                mail to: 'panosvaritis@gmail.com',
+                subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}"
+                body: """\
+Hello,
+
+The build was successful!
+
+Job: ${env.JOB_NAME}
+Build: #${env.BUILD_NUMBER}
+
+Admin user
+"""
             }
-            
         }
 }
