@@ -78,8 +78,20 @@ The build was successful!
 
 Job: ${env.JOB_NAME}
 Build: #${env.BUILD_NUMBER}
+Build Tag: ${BUILD_TAG}
 
 Kind regards Panos
+"""
+            }
+            failure {
+                mail to: 'panosvaritis@gmail.com',
+                subject: "FAILURE: #${BUILD_TAG}",
+                body: """\
+Hello user, 
+Unexpected failure occured
+Build tag: ${BUILD_TAG}
+Commit id to check: ${GIT_COMMIT}
+King regards Panos
 """
             }
         }
