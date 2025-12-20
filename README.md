@@ -50,4 +50,32 @@ Stop the app and clear all the base (To keep the data ommit the -v param)
 docker compose down -v
 ```
 
+## Run jenkins pipeline (Optional- Requires parameterization)
+#### No one can actuallly run the pipeline because my credentials -git hub username and token- are used and cannot be paramameterized. But if someone could take the code and altered it using its own credentials, could follow a similar procedure as described below to run the pipeline
 
+1. Install jenkins in a vm -check the official documentation to see how- or go to the repo bellow and run the compose file as instructed in the readme file of the repository
+```bash
+git clone https://github.com/PanosVaritis/jenkins-container-with-docker.git
+```
+2. Create a new item (provide a name of your liking), select to have a pipeline and then configure it as described
+    - Definition -> Pipeline from SCM 
+    - SCM -> git
+    - Repository URL -> paste this :  https://github.com/PanosVaritis/CrowdFunding-Application.git (No need for credentials - it is a public url)
+    - Branches to build -> /jenkins
+    - Script Path -> Jenkinsfile.dev
+    - Save (You can also set a poll scm from the trigger section but this requires to have the jenkins server always up)
+
+3. The pipeline builds and pushes an image to a container registry (in this scenario git hub, but any should do), so credentials are required (Use your git hub username, and upload a personal access token created from your account)
+    - Manage jenkins -> Credentials -> Global credentials -> Secret text (paste the token you have created from your account). The id you will provide should match the one used inside the pipeline
+
+4. If you want to have the post actions you must configure the smtp server in jenkins, otherwise comment out the part of the code with the post actions
+    - Create from your mail account an app password and upload it as a global credential "Username with Password", were username is the email address and password the app password you have issued and id whatever you want
+    - Jenkins Location -> Sys admin email address -> someone@mail.com -This will be the from email address-
+    - Extended email notification: -you can omit this and go directly to the email notification-
+        - Smtp server: if you have gmail as provider you should use: smtp.gmail.com -eitherwise find your provider from the web. The smtp server you will type here should match the one in the "from" email address
+        - Select smtp port 587, from the advanced section below select the credential you have created, and TLS for security (or 465 port and SSL)
+    - Down in the end of the configuration find : Email - Notification
+        - SMTP server: the same with the one used above
+        - Advanced -> TLS (587) or SSL (465). Should be the same as the one used above
+        - SMTP auth -> username: your email, and password the app password you have issued 
+        - You can check the configuration by sending a test mail
