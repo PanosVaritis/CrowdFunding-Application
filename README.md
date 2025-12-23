@@ -51,7 +51,7 @@ docker compose down -v
 ```
 
 ## Run jenkins pipeline (Optional- Requires parameterization)
-#### No one can actuallly run the pipeline because my credentials -git hub username and token- are used and cannot be paramameterized. But if someone could take the code and altered it using its own credentials, could follow a similar procedure as described below to run the pipeline
+#### No one can actuallly run the pipeline because my credentials -git hub username and token- are used and cannot be paramameterized. But if someone could take the code and altered it using its own credentials, could follow a similar procedure as described below to run the pipeline.
 
 1. Install jenkins in a vm -check the official documentation to see how- or go to the repo bellow and run the compose file as instructed in the readme file of the repository
 ```bash
